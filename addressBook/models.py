@@ -39,7 +39,7 @@ class Address(models.Model):
     RoadNo = models.IntegerField(verbose_name="Road No")
     # foreign Key
     State = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name="State")
-    Country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="Country")
+    # Country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="Country")
 
     def __str__(self):
         return "{}".format(self.Name)
