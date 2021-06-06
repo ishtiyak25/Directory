@@ -11,3 +11,14 @@ class CountryList(generics.ListAPIView):
     serializer_class = CountrySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['Name', 'Code']
+
+
+class StateList(generics.ListAPIView):
+    queryset = State.objects.all()
+    serializer_class = StateSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['Name']
+
+
+class AddressList(generics.ListAPIView):
+    pass
