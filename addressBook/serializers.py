@@ -14,3 +14,20 @@ class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
         fields = ("Country", "Name",)
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    State = serializers.StringRelatedField()
+
+    class Meta:
+        model = Address
+        fields = ("HouseNo", "RoadNo", "Name", "State")
+
+
+class DetailAddressSerializer(serializers.ModelSerializer):
+    State = serializers.StringRelatedField()
+    Country = serializers.StringRelatedField()
+
+    class Meta:
+        model = Address
+        fields = ("HouseNo", "RoadNo", "Name", "State", "Country")

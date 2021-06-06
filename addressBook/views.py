@@ -21,4 +21,12 @@ class StateList(generics.ListAPIView):
 
 
 class AddressList(generics.ListAPIView):
-    pass
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['HouseNo', 'RoadNo']
+
+
+class DetailAddressList(generics.ListAPIView):
+    queryset = Address.objects.all()
+    serializer_class = DetailAddressSerializer
