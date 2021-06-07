@@ -1,7 +1,7 @@
 from django.test import TestCase
-
+from django.test import Client
 # Create your tests here.
-
+from django.conf import settings
 from django.test import TestCase
 from .models import *
 
@@ -39,9 +39,22 @@ class TestModels(TestCase):
         self.assertEqual(Code.count(), 0)
         # Failed
 
+    def test_api_status(self):
+        Cresponse = self.client.get('/api/country/')
+        Sresponse = self.client.get('/api/state/')
+        Aresponse = self.client.get('/api/address/')
+        # Check that the response is 200 OK.
+        self.assertEqual(Cresponse.status_code, 200)
+        self.assertEqual(Sresponse.status_code, 200)
+        self.assertEqual(Aresponse.status_code, 200)
+        self.assertEqual(len(Cresponse.context['Name']), 2)
+        self.assertEqual(len(Sresponse.context['Name']), 2)
+        self.assertEqual(len(Aresponse.context['Name']), 2)
+
+
 
 """
-Data is not testing or returning 0 due to authentication.
+Data is not testing or returning 0 due to authentication. Turn off authentication to get proper result
 we can use more test case as CRUD.
 Instead of testing every possible scenario i have tried to test on local and client and model.
 """
