@@ -99,3 +99,5 @@ Use this API to fetch full address included state and country.
 ```
 
 > I have used "rest_framework.authtoken" to authenticate API from external access. This project is currently providing authentication based on session. If anyone want to use above urls to fetch data he/she must have to be authenticated used.
+
+> To test Application, run: python manage.py test
